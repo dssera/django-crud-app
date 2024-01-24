@@ -25,6 +25,16 @@ Let's talk about each char in CAP:
         delayed connection between two nodes. Partition tolerance means that the cluster must 
         continue to work despite any number of communication breakdowns between nodes in the system.
 
+CA - не разделяемый монолит, back in acid
+CP - устойчиво, непротиворечиво, но время получения ответа - когда нибудь
+AP - время от времени данные не констистентны
 
+Mostly we work with AP (only P irl:)) (bye consistency)
+
+We have BASE design, the idea of this is a pattern based on CAP(AP)
+1.We don't think about consistency (Basically available)
+2.Soft state - to understand this idea we need to remember transaction term
+from one consistency state to another - delete the word consistency ДАННЫЕ В СИСТЕМЕ МОГУТ МЕНЯТСЯ ДАЖЕ ЕСЛИ ВОЗДЕЙТСВИЯ ИЗВНЕ НА СИСТЕМУ НЕТ
+3.Eventually consistent - (когда нагрузок не будет система станет констистентной) 
 
 

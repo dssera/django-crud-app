@@ -1,0 +1,38 @@
+lesson 1-3
+        SELECT * FROM tablename
+
+        SELECT col1, col4 
+        FROM tablename 
+        WHERE col1 = "smth";
+        
+        SELECT * FROM tablename 
+        WHERE (col1 LIKE "%ello, Wor%") OR  (col1 LIKE "H_");
+        +
+        u can use lists with IN and NOT IN commands
+
+lesson 4. Filtering and sorting Query results
+
+    THese operations are not free and you need to not forget about this
+
+    DISTINCT(adjective) - delete duplicates
+
+        SELECT DISTINCT column, another_column, …
+        FROM mytable
+        WHERE condition(s);
+
+    ORDER BY (ASC/DESC are optional)
+
+        SELECT column, another_column, …
+        FROM mytable
+        WHERE condition(s)
+        ORDER BY column ASC/DESC;
+
+    LIMIT and OFFSET - OFFSET means where to start - во время выполнения задания появились вопросы
+
+        SELECT column, another_column, …
+        FROM mytable
+        WHERE condition(s)
+        ORDER BY column ASC/DESC
+        LIMIT num_limit OFFSET num_offset;
+
+
