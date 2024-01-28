@@ -3,7 +3,8 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm
+from django.contrib.auth.models import User
 
 
 # def user_login(request):
@@ -32,9 +33,30 @@ from .forms import LoginForm
 #     else:
 #         form = LoginForm()
 #     return render(request, 'account/login.html', {'form': form})
-    
+
 @login_required
 def dashboard(request):
     return render(request,
                   'registration/dashboard.html',
                   {'section': 'dashboard'})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+
+            # why do we need to set password using special function?
+            # to hash password
+            new_user.set_password(
+                user_form.cleaned_data['password'])
+            new_user.save()
+            return render(request,
+                          'registration/register_done.html',
+                          {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+        return render(request, 
+                      'registration/register.html', 
+                      {'user_form': user_form})
