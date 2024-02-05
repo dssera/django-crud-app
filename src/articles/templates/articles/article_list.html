@@ -2,17 +2,18 @@
 
 {% block title %}Articles{% endblock %}
 {% block content %}
+    <form method="GET">
+        <input type="text" name="q">
+        <input type="submit">
+    </form>
     {% for article in object_list %}
-    <!-- frontend doesn't know what is 'PB' -->
-            {% if article.status == 'PB' %}
             <h2>{{ article.title}}</h2>
             <p>
                 {{ article.body }}
                 <br>
                 <span>author: {{ article.author}}</span>
             </p>
-            {% endif %}
     {% empty %}
-        <p>No articles yet.</p>
+        <p>No articles here.</p>
     {% endfor %}
 {% endblock %}
