@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{object.title}}
+{% endblock %}
+
+{% block content %}
+    <h1>{{object.title}}</h1>
+    <span class="author">{{object.author}}</span> at 
+    <span class="date-of-publication">{{object.publish.date}}</span>
+    <p class="aticle-body">{{object.body}}</p>
+{% endblock %}

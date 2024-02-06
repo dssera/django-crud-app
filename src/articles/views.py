@@ -1,6 +1,7 @@
 from functools import reduce
 import operator
 from typing import Any
+from django.db.models.base import Model as Model
 
 from django.db.models.query import QuerySet
 from django.shortcuts import render
@@ -22,3 +23,7 @@ class ArticleListView(generic.ListView):
             object_list = object_list.filter(reduce(operator.or_, q_list))
         return object_list
     
+class ArticleDetailView(generic.DetailView):
+    model = Article
+    template_name = 'articles/article_detail.html'
+
